@@ -154,7 +154,6 @@ checklink/cookies.txt
 # Current repo special folders
 data/
 nbs-old/
-nbs/
 
 # API and other secret files
 *-api-keys.*
