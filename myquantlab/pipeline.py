@@ -131,16 +131,27 @@ def dframe(
     return df_proc
 
 # %% ../nbs-dev/02_pipelines.ipynb 27
-def build_pipeline(coi, transforms, stats):
-    """Build a pipeline with the given transformers"""
+def build_pipeline(
+    coi:list[str],                  # list of columns to use for feature engineering 
+    transforms:list[BaseEstimator], # list of feature engineering transformers to apply to each column in coi
+    stats: list[BaseEstimator]      # list of stats transformers to apply to engineered feature
+    ) -> BaseEstimator :
+    """Build a pipeline using cols in `coi`, transformers in `transforms` and stats in `stats`
+
+    The output will be a pipeline that takes a OHLCV DataFrame and returns:
+
+     - the original OHLCV columns
+     - for the columns in `coi`, engineers features by applying each of the pipelines in `transforms`
+     - then adds the statistics in `stats` to each of the engineered features
+    """
     feature_stats_steps = [('thru', 'passthrough')]
     for stat in stats:
-        feature_stats_steps.append((stat.nickname, stat))
-    feature_stats = FeatureUnion(feature_stats_steps)
-    feature_stats.nickname = 'stats'
+        feature_stats_steps.append((stat.nickname, stat))   #type:ignore
+    feature_stats = FeatureUnion(feature_stats_steps)       #type:ignore
+    feature_stats.nickname = 'stats'                        #type:ignore
     
     feature_engineering = [Pipeline(
-        [(t.nickname, t),(t.nickname+feature_stats.nickname, feature_stats)]
+        [(t.nickname, t),(t.nickname+feature_stats.nickname, feature_stats)] #type:ignore
         ) for t in transforms]
     pipe_steps = [('thru', 'passthrough', ['Open', 'High', 'Low', 'Close', 'Volume'])]
 
