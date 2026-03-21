@@ -4,4 +4,5 @@ website:
       - index.ipynb
       - 00_core.ipynb
       - 01_ohlcv.ipynb
-      - 02_plotting.ipynb
+      - 02_pipelines.ipynb
+      - 03_plotting.ipynb
