@@ -7,3 +7,8 @@ website:
   description: "A collection of tools for quantitative finance."
   repo-branch: main
   repo-url: "https://github.com/vtecftwy/myquantlab"
+
+format-links:
+  - html
+  - format: commonmark
+    text: Markdown

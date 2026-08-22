@@ -57,6 +57,8 @@ d = { 'settings': { 'branch': 'main',
                                      'myquantlab.plotting.normal_probability_plot': ( 'plotting.html#normal_probability_plot',
                                                                                       'myquantlab/plotting.py'),
                                      'myquantlab.plotting.plot_acfs': ('plotting.html#plot_acfs', 'myquantlab/plotting.py'),
+                                     'myquantlab.plotting.plot_multi_color_line': ( 'plotting.html#plot_multi_color_line',
+                                                                                    'myquantlab/plotting.py'),
                                      'myquantlab.plotting.plot_timeseries': ('plotting.html#plot_timeseries', 'myquantlab/plotting.py'),
                                      'myquantlab.plotting.plot_two_color_line': ( 'plotting.html#plot_two_color_line',
                                                                                   'myquantlab/plotting.py')}}}
